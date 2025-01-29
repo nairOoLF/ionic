@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>📋 Mes Tâches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let task of tasks$ | async">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Date d'échéance:</strong> {{ task.dueDate | date }}</p>
+        <p><strong>Priorité:</strong> {{ task.priority }}</p>
+        <p><strong>Complétée:</strong> {{ task.completed ? 'Oui' : 'Non' }}</p>
+      </ion-label>
+      <ion-button (click)="editTask(task.id)">Modifier</ion-button>
+      <ion-button color="danger" fill="clear" (click)="deleteTask(task.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/add-task']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

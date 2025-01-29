@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter une tâche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+    <ion-item>
+      <ion-label position="floating">Titre</ion-label>
+      <ion-input formControlName="title" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input formControlName="description" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Date d'échéance</ion-label>
+      <ion-input formControlName="dueDate" type="date" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Complétée</ion-label>
+      <ion-checkbox formControlName="completed"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Priorité</ion-label>
+      <ion-select formControlName="priority" required>
+        <ion-select-option value="low">Basse</ion-select-option>
+        <ion-select-option value="medium">Moyenne</ion-select-option>
+        <ion-select-option value="high">Haute</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-button expand="full" type="submit" [disabled]="taskForm.invalid">Sauvegarder la tâche</ion-button>
+  </form>
+</ion-content>
